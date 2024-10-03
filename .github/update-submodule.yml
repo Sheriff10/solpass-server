@@ -1,0 +1,32 @@
+name: Update Parent Repo with Submodule Change
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow on changes to the main branch
+
+jobs:
+  update-parent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout solpass-server Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Git credentials
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Checkout Parent Repo
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/sheriff10/SOLPASS.git
+          cd SOLPASS
+          git submodule update --remote solpass-server  # Update the submodule to the latest commit
+
+      - name: Commit and Push Changes to Parent Repo
+        run: |
+          cd SOLPASS
+          git add solpass-server
+          git commit -m "Auto-update solpass-server submodule"
+          git push origin main
