@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const developer_controller_1 = require("./developer-controller");
+const dev_auth_handler_1 = require("../../middleware/dev-auth-handler");
+const devRoute = (0, express_1.Router)();
+devRoute.post("/apikey/create", dev_auth_handler_1.devAuthHandler, developer_controller_1.createApiKey);
+devRoute.get("/apikey/get", dev_auth_handler_1.devAuthHandler, developer_controller_1.getApiKey);
+devRoute.use(dev_auth_handler_1.apikeyHandler);
+devRoute.get("/address/:address/points", developer_controller_1.addressPoint);
+devRoute.get("/address/:address/quests", developer_controller_1.addressCompletedQuest);
+devRoute.get("/single-quest", developer_controller_1.questDetail);
+devRoute.get("/categories", developer_controller_1.getCategories);
+devRoute.get("/single-category", developer_controller_1.getSingleCategory);
+devRoute.get("/quests/category", developer_controller_1.getQuestsByCategory);
+exports.default = devRoute;

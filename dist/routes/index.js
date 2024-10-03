@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const verification_route_1 = __importDefault(require("../modules/verification/verification-route"));
+const callback_route_1 = __importDefault(require("../modules/callback/callback-route"));
+const auth_route_1 = __importDefault(require("../modules/auth/auth-route"));
+const not_found_1 = __importDefault(require("../middleware/not-found"));
+const address_route_1 = __importDefault(require("../modules/address/address-route"));
+const developer_route_1 = __importDefault(require("../modules/developers/developer-route"));
+const router = (0, express_1.Router)();
+router.use("/auth", auth_route_1.default);
+router.use("/callback", callback_route_1.default);
+router.use("/verification", verification_route_1.default);
+router.use("/address", address_route_1.default);
+router.use("/v1/devloper", developer_route_1.default);
+router.use(not_found_1.default);
+exports.default = router;
