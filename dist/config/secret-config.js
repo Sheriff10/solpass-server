@@ -18,6 +18,7 @@ const getNumericConfigValue = (key) => {
     return numericValue;
 };
 const secret = {
+    ORIGIN: getStringConfigValue("ORIGIN"),
     MONGODB_URI: getStringConfigValue("MONGODB_URI"),
     RECLAIM_APP_ID: getStringConfigValue("RECLAIM_APP_ID"),
     RECLAIM_APP_SECRET: getStringConfigValue("RECLAIM_APP_SECRET"),

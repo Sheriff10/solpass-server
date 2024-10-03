@@ -18,8 +18,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    // origin: secret.ORIGIN,
-    origin: "*",
+    origin: secret.ORIGIN,
     credentials: true,
   })
 );
