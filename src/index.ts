@@ -41,5 +41,5 @@ const start = async () => {
     console.log(appMessage);
   });
 };
-// test auto deploy
+// test auto deploy -- v2
 start();
