@@ -22,7 +22,8 @@ export const getCategoryStatsByUserAddress = async (
   req: Request,
   res: Response
 ) => {
-  const { address: userAddress } = req.params;
+  // const { address: userAddress } = req.params;
+  const userAddress = req.user?.address;
   const { error } = createAddressProfileValidation.validate({
     address: userAddress,
   });
@@ -107,7 +108,8 @@ export const getCategoryStatsByUserAddress = async (
 
 export const getAddressStats = async (req: Request, res: Response) => {
   try {
-    const { address } = req.params;
+    // const { address } = req.params;
+    const address = req.user?.address;
     const { error } = createAddressProfileValidation.validate({
       address,
     });

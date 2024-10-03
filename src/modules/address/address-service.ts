@@ -54,10 +54,8 @@ export default class AddressService {
     return getAddress;
   };
 
-  getQuests = async () => {
-    const getQuests = Quest.findOne();
-    if (!getQuests) throw new Error("No Quest Found");
-
+  getQuests = async (): Promise<any> => {
+    const getQuests = Quest.find({});
     return getQuests;
   };
 }

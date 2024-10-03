@@ -1,8 +1,6 @@
 import { Proof, Reclaim } from "@reclaimprotocol/js-sdk";
 import axios from "axios";
-import { VerificationContext } from "../../types/verification";
 
-interface Context extends VerificationContext {}
 export default class ReclaimCallback {
   verifyProofSubmission = async (
     statusUrl: string
@@ -12,7 +10,7 @@ export default class ReclaimCallback {
       const statusData = response.data;
       const statusV2 = statusData?.session?.statusV2;
 
-      if (statusV2 !== "PROOF_SUBMITTED") {
+      if (statusV2 !== "PROOF_GENERATION_SUCCESS") {
         console.log("Proof not submitted yet."); // Optional: Logging for better visibility
         return undefined;
       }

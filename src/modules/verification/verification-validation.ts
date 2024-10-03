@@ -22,7 +22,7 @@ export const getPostRequestSchema = async () => {
   const categoryNames = categories.map((category) => category.name);
 
   return Joi.object({
-    address: Joi.string().required().min(44).max(44), // Solana address length validation
+    // address: Joi.string().required().min(44).max(44), // Solana address length validation
     questType: Joi.string()
       .valid(...categoryNames) // Use dynamic category names
       .required(),

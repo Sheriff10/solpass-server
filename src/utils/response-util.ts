@@ -23,4 +23,8 @@ export function notFoundResponse(res: Response, message?: string) {
   return res.status(404).send({ error: message ? message : "Not Found" });
 }
 
+export function devResponse(res: Response, data: any) {
+  return res.status(200).send({ ...data, success: true });
+}
+
 export default response;

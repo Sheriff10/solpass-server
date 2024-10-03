@@ -12,10 +12,12 @@ export const createVerification = async (req: Request, res: Response) => {
   try {
     // Validate request body
     const postRequestSchema = await getPostRequestSchema();
+    const address = req.user?.address;
     const { error } = postRequestSchema.validate(req.body);
+    console.log(error?.message);
     if (error) return badReqResponse(res, error.message);
 
-    const { address, questType } = req.body;
+    const { questType } = req.body;
 
     // const quest = quests.find((quest) => quest.name === questType);
     const quest = await Quest.findOne({ name: questType });
