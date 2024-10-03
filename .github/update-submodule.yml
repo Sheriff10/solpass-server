@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout solpass-server Repo
         uses: actions/checkout@v3
+        with:
+          submodules: recursive # Ensure submodules are initialized and updated during checkout
 
       - name: Set up Git credentials
         run: |
@@ -22,7 +24,7 @@ jobs:
         run: |
           git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/sheriff10/SOLPASS.git
           cd SOLPASS
-          git submodule update --remote solpass-server  # Update the submodule to the latest commit
+          git submodule update --remote solpass-server  # Pull the latest commit from the solpass-server repo
 
       - name: Commit and Push Changes to Parent Repo
         run: |
