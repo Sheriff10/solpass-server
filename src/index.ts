@@ -16,7 +16,12 @@ const app = express();
 // Use middlewares
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://reclaim-frontend.vercel.app/"],
+    credentials: true,
+  })
+);
 
 // Morgan middleware to log HTTP requests
 if (secret.NODE_ENV === "development") {
