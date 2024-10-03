@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://reclaim-frontend.vercel.app/"],
+    origin: secret.ORIGIN,
     credentials: true,
   })
 );
